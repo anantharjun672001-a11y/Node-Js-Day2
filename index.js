@@ -1,6 +1,7 @@
 import http from "http";
 import dotenv from "dotenv";
 import express from "express";
+import cors from "cors";
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(cors())
 
 app.get("/", (req, res) => {
     res.status(200).send(`<h1 style="text-align:center;">Welcome to Backend</h1>`);
