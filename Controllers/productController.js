@@ -36,3 +36,25 @@ export const getProductById = (req,res) => {
     res.status(503).json({message:"Cannot retive the product , Error in get product"});
   }
 }
+
+//create product
+
+export const createProduct = (req, res) => {
+  try {
+    const { name, price } = req.body;
+    const newProduct = {
+      id: products.length + 1,
+      name: name,
+      price: price,
+    };
+    products.push(newProduct);
+
+    res
+      .status(200)
+      .json({ message: "Product Created Successfully", data: newProduct });
+  } catch (error) {
+    res.status(503).json({
+      message: "Cannot create the product, Error in create product",
+    });
+  }
+};
